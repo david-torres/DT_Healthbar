@@ -1,18 +1,27 @@
-local back_color = 0xFF0000
-local front_color = 0x00FF00
-local max_value = 100
-
 local width = 100
 local height = 10
 
-local healthbar = DT_HealthBar.new(height, width, front_color, back_color, max_value)
+local front_color = 0x00FF00
+local back_color = 0xFF0000
+
+local max_value = 100
+
+
+local healthbar = DT_HealthBar.new(width, height, front_color, back_color, max_value)
 
 --add it to stage
 stage:addChild(healthbar)
 
 --position where you want it to be
-healthbar:setPosition(100, 100)
+_W = (application:getContentWidth() * 0.5) - (healthbar:getWidth() * 0.5)
+_H = (application:getContentHeight() * 0.5) - (healthbar:getHeight() * 0.5)
 
+healthbar:setPosition(_W, _H)
+-- healthbar:setRotation(-90) -- flip it vertical
+
+--
+-- Empty a full healthbar
+--
 healthbar:fill()
 local decrement_healthbar = function()
     healthbar:subtract(10)
@@ -23,6 +32,9 @@ health_down:addEventListener(Event.TIMER, decrement_healthbar)
 health_down:start()
 
 
+--
+-- Fill an empty healthbar
+--
 -- healthbar:empty()
 -- local increment_healthbar = function()
 --     healthbar:add(12)

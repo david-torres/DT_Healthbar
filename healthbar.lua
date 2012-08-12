@@ -1,6 +1,6 @@
 DT_HealthBar = Core.class(Sprite)
 
-function DT_HealthBar:init(height, width, front_color, back_color, max_value)
+function DT_HealthBar:init(width, height, front_color, back_color, max_value)
     self.size = 1
     self.back_color = back_color
     self.front_color = front_color
