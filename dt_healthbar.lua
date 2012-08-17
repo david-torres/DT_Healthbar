@@ -14,43 +14,28 @@ function DT_HealthBar:init(width, height, front_color, back_color, max_value)
     self.current = max_value
     self.current_width = width
 
-    self:addChild(self:draw_back_bar())
-    self:addChild(self:draw_front_bar())
+    self:addChild(self:draw_bar(self.width, self.back_color))
+    self:addChild(self:draw_bar(self.width, self.front_color))
 end
 
-function DT_HealthBar:draw_back_bar()
-    local back_bar = Shape.new()
-    back_bar:setFillStyle(self.fill_style, self.back_color)
-    back_bar:setLineStyle(self.size, self.back_color, self.alpha)
-    back_bar:beginPath()
-    back_bar:moveTo(0,0)
-    back_bar:lineTo(self.width, 0)
-    back_bar:lineTo(self.width, self.height)
-    back_bar:lineTo(0, self.height)
-    back_bar:lineTo(0, 0)
-    back_bar:endPath()
+function DT_HealthBar:draw_bar(width, color)
+    local bar = Shape.new()
+    bar:setFillStyle(self.fill_style, color)
+    bar:setLineStyle(self.size, color, self.alpha)
+    bar:beginPath()
+    bar:moveTo(0,0)
+    bar:lineTo(width, 0)
+    bar:lineTo(width, self.height)
+    bar:lineTo(0, self.height)
+    bar:lineTo(0, 0)
+    bar:endPath()
 
-    return back_bar
-end
-
-function DT_HealthBar:draw_front_bar()
-    local front_bar = Shape.new()
-    front_bar:setFillStyle(self.fill_style, self.front_color)
-    front_bar:setLineStyle(self.size, self.front_color, self.alpha)
-    front_bar:beginPath()
-    front_bar:moveTo(0,0)
-    front_bar:lineTo(self.current_width, 0)
-    front_bar:lineTo(self.current_width, self.height)
-    front_bar:lineTo(0, self.height)
-    front_bar:lineTo(0, 0)
-    front_bar:endPath()
-
-    return front_bar
+    return bar
 end
 
 function DT_HealthBar:update()
     self:removeChildAt(2)
-    self:addChild(self:draw_front_bar())
+    self:addChild(self:draw_bar(self.current_width, self.front_color))
 end
 
 function DT_HealthBar:add(amount)
