@@ -24,7 +24,7 @@ __Initialization__
 	healthbar:setPosition(_W, _H)
 	-- healthbar:setRotation(-90) -- flip it vertical
 
-__Empty a full healthbar__
+__Empty a full health bar__
 
 	healthbar:fill()
 
@@ -36,7 +36,7 @@ __Empty a full healthbar__
 	health_down:addEventListener(Event.TIMER, decrement_healthbar)
 	health_down:start()
 
-__Fill an empty healthbar__
+__Fill an empty health bar__
 
 	healthbar:empty()
 
