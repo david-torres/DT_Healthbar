@@ -4,9 +4,10 @@ local height = 10
 local front_color = 0x00FF00
 local back_color = 0xFF0000
 
+-- how "full" can this bar be?
 local max_value = 100
 
-
+-- create the health bar
 local healthbar = DT_HealthBar.new(width, height, front_color, back_color, max_value)
 
 --add it to stage
