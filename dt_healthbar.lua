@@ -1,18 +1,18 @@
 DT_HealthBar = Core.class(Sprite)
 
-function DT_HealthBar:init(width, height, front_color, back_color, max_value)
+function DT_HealthBar:init(config)
     self.size = 1
-    self.back_color = back_color
-    self.front_color = front_color
+    self.back_color = config.back_color
+    self.front_color = config.front_color
     self.alpha = 1
     self.fill_style = Shape.SOLID
-    self.max_value = max_value
+    self.max_value = config.max_value
     self.min_value = 0
-    self.width = width
-    self.height = height
+    self.width = config.width
+    self.height = config.height
 
-    self.current = max_value
-    self.current_width = width
+    self.current = config.max_value
+    self.current_width = config.width
 
     self:addChild(self:draw_bar(self.width, self.back_color))
     self:addChild(self:draw_bar(self.width, self.front_color))
@@ -66,7 +66,7 @@ end
 
 function DT_HealthBar:fill()
     self.current = self.max_value
-    self.current_width = self.max_value
+    self.current_width = self.width
     self:update()
 end
 

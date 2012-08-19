@@ -1,14 +1,11 @@
-local width = 100
-local height = 10
-
-local front_color = 0x00FF00
-local back_color = 0xFF0000
-
--- how "full" can this bar be?
-local max_value = 100
-
 -- create the health bar
-local healthbar = DT_HealthBar.new(width, height, front_color, back_color, max_value)
+local healthbar = DT_HealthBar.new({
+    width = 100,
+    height = 10,
+    front_color = 0x00FF00,
+    back_color = 0xFF0000,
+    max_value = 100 -- how "full" can this bar be?
+})
 
 --add it to stage
 stage:addChild(healthbar)
@@ -23,24 +20,24 @@ healthbar:setPosition(_W, _H)
 --
 -- Empty a full healthbar
 --
-healthbar:fill()
-local decrement_healthbar = function()
-    healthbar:subtract(10)
-end
+-- healthbar:fill()
+-- local decrement_healthbar = function()
+--     healthbar:subtract(10)
+-- end
 
-local health_down = Timer.new(600, 10)
-health_down:addEventListener(Event.TIMER, decrement_healthbar)
-health_down:start()
+-- local health_down = Timer.new(600, 10)
+-- health_down:addEventListener(Event.TIMER, decrement_healthbar)
+-- health_down:start()
 
 
 --
 -- Fill an empty healthbar
 --
--- healthbar:empty()
--- local increment_healthbar = function()
---     healthbar:add(12)
--- end
+healthbar:empty()
+local increment_healthbar = function()
+    healthbar:add(10)
+end
 
--- local health_up = Timer.new(600, 10)
--- health_up:addEventListener(Event.TIMER, increment_healthbar)
--- health_up:start()
+local health_up = Timer.new(600, 10)
+health_up:addEventListener(Event.TIMER, increment_healthbar)
+health_up:start()
